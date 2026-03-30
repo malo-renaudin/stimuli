@@ -1,0 +1,193 @@
+Trial_ID,Condition_Code,Sentence_String,Is_Filler,Expected_Verb,Base_ID,Subject_Number,Local_Number,Local_Noun_Slot,Interference_Type,Subject_Liaison_Cue,Delayed_Repetition,Delay_ms,Go_Beep,Audio_Normalization_Note
+T001,Fem_PlurSub_SingLoc_Medium,"À côté de la route, les étudiantes près du verger finissent.",False,finissent,B06,plural,singular,pp1,Mismatch,liaison_z,True,2000,True,Normalize pre-verb pause and verb duration across conditions.
+T002,Fem_PlurSub_SingLoc_Short,"À côté de la bibliothèque, près du campus, les amatrices sont préoccupées.",False,sont,B07,plural,singular,pp1,Mismatch,liaison_z,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T003,Fem_SingSub_SingLoc_Short,"À côté de la route, près du verger, l'étudiante finit.",False,finit,B06,singular,singular,pp1,Match,no_liaison,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T004,Masc_SingSub_PlurLoc_Long,L'ami près du jardin à côté des villages est heureux.,False,est,B01,singular,plural,pp2,Mismatch,no_liaison,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T005,Masc_SingSub_PlurLoc_Short,"À côté de l'école, près des professeurs, l'artiste est content.",False,est,B03,singular,plural,pp1,Mismatch,no_liaison,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T006,Masc_PlurSub_SingLoc_Medium,"À côté de la maison, les étudiants près du musicien finissent.",False,finissent,B02,plural,singular,pp1,Mismatch,liaison_z,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T007,Masc_PlurSub_PlurLoc_Short,"À côté de l'usine, près des ateliers, les infirmiers finissent.",False,finissent,B04,plural,plural,pp1,Match,liaison_z,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T008,Filler_SVO,Le pilote cherche la lampe.,True,cherche,FILLER,singular,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T009,Masc_PlurSub_SingLoc_Long,Les artistes près du professeur à côté de l'école sont contents.,False,sont,B03,plural,singular,pp2,Mismatch,liaison_z,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T010,Masc_PlurSub_PlurLoc_Medium,"À côté de l'école, les artistes près des professeurs sont contents.",False,sont,B03,plural,plural,pp1,Match,liaison_z,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T011,Fem_SingSub_PlurLoc_Medium,"À côté de la route, l'étudiante près des vergers finit.",False,finit,B06,singular,plural,pp1,Mismatch,no_liaison,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T012,Masc_SingSub_SingLoc_Long,L'artiste près du professeur à côté de l'école est content.,False,est,B03,singular,singular,pp2,Match,no_liaison,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T013,Filler_SVO,Le médecin suit le roman.,True,suit,FILLER,singular,NA,NA,NA,NA,True,1750,True,Use fillers to prevent structural habituation.
+T014,Filler_Neg,Le médecin ne suit pas les photos.,True,suit,FILLER,singular,NA,NA,NA,NA,True,1250,True,Use fillers to prevent structural habituation.
+T015,Filler_Neg,Les journalistes ne aiment pas les radios.,True,aiment,FILLER,plural,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T016,Masc_SingSub_SingLoc_Short,"À côté de la maison, près du musicien, l'étudiant finit.",False,finit,B02,singular,singular,pp1,Match,no_liaison,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T017,Filler_Neg,Le pilote ne porte pas les romans.,True,porte,FILLER,singular,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T018,Masc_SingSub_PlurLoc_Medium,"À côté de la maison, l'étudiant près des musiciens finit.",False,finit,B02,singular,plural,pp1,Mismatch,no_liaison,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T019,Masc_PlurSub_SingLoc_Short,"À côté de l'usine, près de l'atelier, les infirmiers finissent.",False,finissent,B04,plural,singular,pp1,Mismatch,liaison_z,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T020,Fem_PlurSub_SingLoc_Long,Les amies près du jardin à côté de la ville sont heureuses.,False,sont,B05,plural,singular,pp2,Mismatch,liaison_z,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T021,Filler_Neg,Les chercheuses ne cherchent pas les photos.,True,cherchent,FILLER,plural,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T022,Fem_PlurSub_PlurLoc_Short,"À côté de la bibliothèque, près des campus, les amatrices sont préoccupées.",False,sont,B07,plural,plural,pp1,Match,liaison_z,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T023,Filler_Neg,Les pilotes ne trouvent pas les romans.,True,trouvent,FILLER,plural,NA,NA,NA,NA,True,1250,True,Use fillers to prevent structural habituation.
+T024,Fem_SingSub_SingLoc_Long,L'étudiante près du verger à côté de la route finit.,False,finit,B06,singular,singular,pp2,Match,no_liaison,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T025,Masc_SingSub_SingLoc_Short,"À côté du village, près du jardin, l'ami est heureux.",False,est,B01,singular,singular,pp1,Match,no_liaison,True,2000,True,Normalize pre-verb pause and verb duration across conditions.
+T026,Filler_SVO,Les pilotes aiment le roman.,True,aiment,FILLER,plural,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T027,Filler_Neg,Les chercheuses ne aiment pas les lampes.,True,aiment,FILLER,plural,NA,NA,NA,NA,True,1750,True,Use fillers to prevent structural habituation.
+T028,Fem_PlurSub_PlurLoc_Medium,"À côté de la bibliothèque, les amatrices près des campus sont préoccupées.",False,sont,B07,plural,plural,pp1,Match,liaison_z,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T029,Filler_Neg,La musicienne ne cherche pas les lampes.,True,cherche,FILLER,singular,NA,NA,NA,NA,True,1750,True,Use fillers to prevent structural habituation.
+T030,Filler_Neg,La journaliste ne cherche pas les lampes.,True,cherche,FILLER,singular,NA,NA,NA,NA,True,1750,True,Use fillers to prevent structural habituation.
+T031,Filler_SVO,La journaliste porte la radio.,True,porte,FILLER,singular,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T032,Fem_PlurSub_PlurLoc_Short,"À côté de la route, près des vergers, les étudiantes finissent.",False,finissent,B06,plural,plural,pp1,Match,liaison_z,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T033,Filler_Neg,Les pilotes ne portent pas les romans.,True,portent,FILLER,plural,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T034,Filler_SVO,Le pilote suit le roman.,True,suit,FILLER,singular,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T035,Masc_SingSub_PlurLoc_Long,L'artiste près du professeur à côté des écoles est content.,False,est,B03,singular,plural,pp2,Mismatch,no_liaison,True,2000,True,Normalize pre-verb pause and verb duration across conditions.
+T036,Masc_PlurSub_PlurLoc_Short,"À côté de l'école, près des professeurs, les artistes sont contents.",False,sont,B03,plural,plural,pp1,Match,liaison_z,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T037,Filler_Neg,Les médecins ne aiment pas les radios.,True,aiment,FILLER,plural,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T038,Filler_SVO,Les journalistes trouvent la lampe.,True,trouvent,FILLER,plural,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T039,Filler_Neg,Les pilotes ne aiment pas les messages.,True,aiment,FILLER,plural,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T040,Filler_Neg,Le pilote ne suit pas les radios.,True,suit,FILLER,singular,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T041,Filler_Neg,Les voisins ne cherchent pas les photos.,True,cherchent,FILLER,plural,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T042,Masc_PlurSub_PlurLoc_Medium,"À côté du village, les amis près des jardins sont heureux.",False,sont,B01,plural,plural,pp1,Match,liaison_z,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T043,Fem_PlurSub_SingLoc_Medium,"À côté de la bibliothèque, les amatrices près du campus sont préoccupées.",False,sont,B07,plural,singular,pp1,Mismatch,liaison_z,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T044,Fem_PlurSub_PlurLoc_Short,"À côté de l'avenue, près des quartiers, les infirmières finissent.",False,finissent,B08,plural,plural,pp1,Match,liaison_z,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T045,Masc_PlurSub_PlurLoc_Long,Les étudiants près du musicien à côté des maisons finissent.,False,finissent,B02,plural,plural,pp2,Match,liaison_z,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T046,Filler_Neg,Les chercheuses ne portent pas les dossiers.,True,portent,FILLER,plural,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T047,Filler_SVO,Le voisin suit la lampe.,True,suit,FILLER,singular,NA,NA,NA,NA,True,1750,True,Use fillers to prevent structural habituation.
+T048,Masc_PlurSub_PlurLoc_Short,"À côté du village, près des jardins, les amis sont heureux.",False,sont,B01,plural,plural,pp1,Match,liaison_z,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T049,Masc_SingSub_PlurLoc_Short,"À côté du village, près des jardins, l'ami est heureux.",False,est,B01,singular,plural,pp1,Mismatch,no_liaison,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T050,Fem_SingSub_SingLoc_Medium,"À côté de la bibliothèque, l'amatrice près du campus est préoccupée.",False,est,B07,singular,singular,pp1,Match,no_liaison,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T051,Filler_SVO,Les musiciennes regardent le roman.,True,regardent,FILLER,plural,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T052,Filler_Neg,Les journalistes ne aiment pas les dossiers.,True,aiment,FILLER,plural,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T053,Filler_SVO,Le voisin regarde la radio.,True,regarde,FILLER,singular,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T054,Fem_PlurSub_SingLoc_Medium,"À côté de l'avenue, les infirmières près du quartier finissent.",False,finissent,B08,plural,singular,pp1,Mismatch,liaison_z,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T055,Masc_SingSub_PlurLoc_Long,L'étudiant près du musicien à côté des maisons finit.,False,finit,B02,singular,plural,pp2,Mismatch,no_liaison,True,2000,True,Normalize pre-verb pause and verb duration across conditions.
+T056,Filler_SVO,La musicienne regarde la radio.,True,regarde,FILLER,singular,NA,NA,NA,NA,True,1250,True,Use fillers to prevent structural habituation.
+T057,Fem_SingSub_SingLoc_Short,"À côté de la bibliothèque, près du campus, l'amatrice est préoccupée.",False,est,B07,singular,singular,pp1,Match,no_liaison,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T058,Filler_Neg,Les musiciennes ne cherchent pas les lampes.,True,cherchent,FILLER,plural,NA,NA,NA,NA,True,1750,True,Use fillers to prevent structural habituation.
+T059,Masc_SingSub_SingLoc_Long,L'étudiant près du musicien à côté de la maison finit.,False,finit,B02,singular,singular,pp2,Match,no_liaison,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T060,Filler_Neg,Les pilotes ne suivent pas les dossiers.,True,suivent,FILLER,plural,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T061,Filler_Neg,Le pilote ne suit pas les dossiers.,True,suit,FILLER,singular,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T062,Filler_Neg,Le voisin ne trouve pas les photos.,True,trouve,FILLER,singular,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T063,Filler_Neg,Les voisins ne portent pas les photos.,True,portent,FILLER,plural,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T064,Filler_Neg,Le médecin ne porte pas les photos.,True,porte,FILLER,singular,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T065,Masc_PlurSub_PlurLoc_Short,"À côté de la maison, près des musiciens, les étudiants finissent.",False,finissent,B02,plural,plural,pp1,Match,liaison_z,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T066,Filler_SVO,Le pilote porte la lampe.,True,porte,FILLER,singular,NA,NA,NA,NA,True,1250,True,Use fillers to prevent structural habituation.
+T067,Filler_Neg,Les chercheuses ne regardent pas les dossiers.,True,regardent,FILLER,plural,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T068,Masc_SingSub_SingLoc_Long,L'ami près du jardin à côté du village est heureux.,False,est,B01,singular,singular,pp2,Match,no_liaison,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T069,Masc_SingSub_PlurLoc_Long,L'infirmier près de l'atelier à côté des usines finit.,False,finit,B04,singular,plural,pp2,Mismatch,no_liaison,True,2000,True,Normalize pre-verb pause and verb duration across conditions.
+T070,Filler_SVO,Les musiciennes aiment la radio.,True,aiment,FILLER,plural,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T071,Masc_SingSub_PlurLoc_Medium,"À côté de l'école, l'artiste près des professeurs est content.",False,est,B03,singular,plural,pp1,Mismatch,no_liaison,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T072,Masc_SingSub_PlurLoc_Short,"À côté de la maison, près des musiciens, l'étudiant finit.",False,finit,B02,singular,plural,pp1,Mismatch,no_liaison,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T073,Filler_Neg,Les pilotes ne suivent pas les photos.,True,suivent,FILLER,plural,NA,NA,NA,NA,True,1250,True,Use fillers to prevent structural habituation.
+T074,Masc_SingSub_PlurLoc_Medium,"À côté du village, l'ami près des jardins est heureux.",False,est,B01,singular,plural,pp1,Mismatch,no_liaison,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T075,Filler_Neg,Les musiciennes ne trouvent pas les photos.,True,trouvent,FILLER,plural,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T076,Masc_SingSub_SingLoc_Long,L'infirmier près de l'atelier à côté de l'usine finit.,False,finit,B04,singular,singular,pp2,Match,no_liaison,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T077,Fem_PlurSub_SingLoc_Short,"À côté de l'avenue, près du quartier, les infirmières finissent.",False,finissent,B08,plural,singular,pp1,Mismatch,liaison_z,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T078,Filler_SVO,Les chercheuses regardent le dossier.,True,regardent,FILLER,plural,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T079,Fem_SingSub_SingLoc_Short,"À côté de la ville, près du jardin, l'amie est heureuse.",False,est,B05,singular,singular,pp1,Match,no_liaison,True,2000,True,Normalize pre-verb pause and verb duration across conditions.
+T080,Fem_PlurSub_PlurLoc_Long,Les amatrices près du campus à côté des bibliothèques sont préoccupées.,False,sont,B07,plural,plural,pp2,Match,liaison_z,True,2000,True,Normalize pre-verb pause and verb duration across conditions.
+T081,Filler_Neg,Les pilotes ne cherchent pas les dossiers.,True,cherchent,FILLER,plural,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T082,Filler_SVO,Les journalistes suivent le roman.,True,suivent,FILLER,plural,NA,NA,NA,NA,True,1750,True,Use fillers to prevent structural habituation.
+T083,Filler_SVO,Les pilotes cherchent la photo.,True,cherchent,FILLER,plural,NA,NA,NA,NA,True,1250,True,Use fillers to prevent structural habituation.
+T084,Masc_PlurSub_SingLoc_Medium,"À côté de l'usine, les infirmiers près de l'atelier finissent.",False,finissent,B04,plural,singular,pp1,Mismatch,liaison_z,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T085,Masc_PlurSub_SingLoc_Medium,"À côté de l'école, les artistes près du professeur sont contents.",False,sont,B03,plural,singular,pp1,Mismatch,liaison_z,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T086,Filler_SVO,Le voisin porte la photo.,True,porte,FILLER,singular,NA,NA,NA,NA,True,1750,True,Use fillers to prevent structural habituation.
+T087,Filler_SVO,Les musiciennes suivent le roman.,True,suivent,FILLER,plural,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T088,Masc_SingSub_SingLoc_Short,"À côté de l'école, près du professeur, l'artiste est content.",False,est,B03,singular,singular,pp1,Match,no_liaison,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T089,Filler_Neg,Le pilote ne trouve pas les radios.,True,trouve,FILLER,singular,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T090,Fem_PlurSub_PlurLoc_Medium,"À côté de la ville, les amies près des jardins sont heureuses.",False,sont,B05,plural,plural,pp1,Match,liaison_z,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T091,Fem_PlurSub_SingLoc_Short,"À côté de la ville, près du jardin, les amies sont heureuses.",False,sont,B05,plural,singular,pp1,Mismatch,liaison_z,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T092,Filler_Neg,Les médecins ne suivent pas les radios.,True,suivent,FILLER,plural,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T093,Filler_SVO,Le pilote suit la photo.,True,suit,FILLER,singular,NA,NA,NA,NA,True,1250,True,Use fillers to prevent structural habituation.
+T094,Filler_Neg,Le pilote ne aime pas les messages.,True,aime,FILLER,singular,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T095,Filler_Neg,Les voisins ne trouvent pas les lampes.,True,trouvent,FILLER,plural,NA,NA,NA,NA,True,1250,True,Use fillers to prevent structural habituation.
+T096,Filler_SVO,La journaliste porte le dossier.,True,porte,FILLER,singular,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T097,Filler_Neg,Les voisins ne regardent pas les messages.,True,regardent,FILLER,plural,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T098,Fem_PlurSub_PlurLoc_Medium,"À côté de la route, les étudiantes près des vergers finissent.",False,finissent,B06,plural,plural,pp1,Match,liaison_z,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T099,Masc_PlurSub_SingLoc_Medium,"À côté du village, les amis près du jardin sont heureux.",False,sont,B01,plural,singular,pp1,Mismatch,liaison_z,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T100,Filler_SVO,Le voisin cherche le dossier.,True,cherche,FILLER,singular,NA,NA,NA,NA,True,1250,True,Use fillers to prevent structural habituation.
+T101,Fem_PlurSub_SingLoc_Long,Les amatrices près du campus à côté de la bibliothèque sont préoccupées.,False,sont,B07,plural,singular,pp2,Mismatch,liaison_z,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T102,Filler_SVO,La chercheuse suit le dossier.,True,suit,FILLER,singular,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T103,Fem_SingSub_PlurLoc_Short,"À côté de la bibliothèque, près des campus, l'amatrice est préoccupée.",False,est,B07,singular,plural,pp1,Mismatch,no_liaison,True,2000,True,Normalize pre-verb pause and verb duration across conditions.
+T104,Filler_SVO,Les voisins portent la photo.,True,portent,FILLER,plural,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T105,Masc_SingSub_SingLoc_Short,"À côté de l'usine, près de l'atelier, l'infirmier finit.",False,finit,B04,singular,singular,pp1,Match,no_liaison,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T106,Filler_SVO,Les médecins portent la photo.,True,portent,FILLER,plural,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T107,Filler_SVO,Les musiciennes portent la photo.,True,portent,FILLER,plural,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T108,Masc_PlurSub_SingLoc_Long,Les amis près du jardin à côté du village sont heureux.,False,sont,B01,plural,singular,pp2,Mismatch,liaison_z,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T109,Masc_PlurSub_SingLoc_Short,"À côté de l'école, près du professeur, les artistes sont contents.",False,sont,B03,plural,singular,pp1,Mismatch,liaison_z,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T110,Filler_SVO,Les chercheuses portent la radio.,True,portent,FILLER,plural,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T111,Fem_PlurSub_SingLoc_Medium,"À côté de la ville, les amies près du jardin sont heureuses.",False,sont,B05,plural,singular,pp1,Mismatch,liaison_z,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T112,Masc_SingSub_PlurLoc_Medium,"À côté de l'usine, l'infirmier près des ateliers finit.",False,finit,B04,singular,plural,pp1,Mismatch,no_liaison,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T113,Fem_SingSub_SingLoc_Long,L'infirmière près du quartier à côté de l'avenue finit.,False,finit,B08,singular,singular,pp2,Match,no_liaison,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T114,Masc_SingSub_SingLoc_Medium,"À côté de l'école, l'artiste près du professeur est content.",False,est,B03,singular,singular,pp1,Match,no_liaison,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T115,Filler_SVO,Les musiciennes cherchent la photo.,True,cherchent,FILLER,plural,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T116,Fem_SingSub_SingLoc_Short,"À côté de l'avenue, près du quartier, l'infirmière finit.",False,finit,B08,singular,singular,pp1,Match,no_liaison,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T117,Filler_SVO,Les médecins portent le roman.,True,portent,FILLER,plural,NA,NA,NA,NA,True,1750,True,Use fillers to prevent structural habituation.
+T118,Filler_SVO,La journaliste regarde le dossier.,True,regarde,FILLER,singular,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T119,Filler_Neg,Les chercheuses ne regardent pas les messages.,True,regardent,FILLER,plural,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T120,Fem_PlurSub_PlurLoc_Long,Les amies près du jardin à côté des villes sont heureuses.,False,sont,B05,plural,plural,pp2,Match,liaison_z,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T121,Fem_SingSub_PlurLoc_Long,L'étudiante près du verger à côté des routes finit.,False,finit,B06,singular,plural,pp2,Mismatch,no_liaison,True,2000,True,Normalize pre-verb pause and verb duration across conditions.
+T122,Fem_PlurSub_PlurLoc_Medium,"À côté de l'avenue, les infirmières près des quartiers finissent.",False,finissent,B08,plural,plural,pp1,Match,liaison_z,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T123,Filler_SVO,Les chercheuses regardent la radio.,True,regardent,FILLER,plural,NA,NA,NA,NA,True,1750,True,Use fillers to prevent structural habituation.
+T124,Filler_SVO,Les pilotes regardent la radio.,True,regardent,FILLER,plural,NA,NA,NA,NA,True,1250,True,Use fillers to prevent structural habituation.
+T125,Filler_Neg,Les médecins ne portent pas les lampes.,True,portent,FILLER,plural,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T126,Filler_SVO,Les voisins suivent le message.,True,suivent,FILLER,plural,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T127,Masc_SingSub_SingLoc_Medium,"À côté de la maison, l'étudiant près du musicien finit.",False,finit,B02,singular,singular,pp1,Match,no_liaison,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T128,Filler_SVO,Le voisin regarde le dossier.,True,regarde,FILLER,singular,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T129,Filler_SVO,Les journalistes portent le roman.,True,portent,FILLER,plural,NA,NA,NA,NA,True,1250,True,Use fillers to prevent structural habituation.
+T130,Filler_SVO,Les voisins cherchent le message.,True,cherchent,FILLER,plural,NA,NA,NA,NA,True,1750,True,Use fillers to prevent structural habituation.
+T131,Masc_PlurSub_SingLoc_Short,"À côté de la maison, près du musicien, les étudiants finissent.",False,finissent,B02,plural,singular,pp1,Mismatch,liaison_z,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T132,Filler_Neg,La journaliste ne regarde pas les lampes.,True,regarde,FILLER,singular,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T133,Fem_SingSub_PlurLoc_Short,"À côté de l'avenue, près des quartiers, l'infirmière finit.",False,finit,B08,singular,plural,pp1,Mismatch,no_liaison,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T134,Filler_Neg,Les musiciennes ne regardent pas les romans.,True,regardent,FILLER,plural,NA,NA,NA,NA,True,1250,True,Use fillers to prevent structural habituation.
+T135,Fem_PlurSub_SingLoc_Long,Les étudiantes près du verger à côté de la route finissent.,False,finissent,B06,plural,singular,pp2,Mismatch,liaison_z,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T136,Filler_SVO,Les journalistes trouvent la radio.,True,trouvent,FILLER,plural,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T137,Fem_SingSub_PlurLoc_Long,L'amatrice près du campus à côté des bibliothèques est préoccupée.,False,est,B07,singular,plural,pp2,Mismatch,no_liaison,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T138,Fem_PlurSub_SingLoc_Long,Les infirmières près du quartier à côté de l'avenue finissent.,False,finissent,B08,plural,singular,pp2,Mismatch,liaison_z,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T139,Fem_SingSub_SingLoc_Medium,"À côté de l'avenue, l'infirmière près du quartier finit.",False,finit,B08,singular,singular,pp1,Match,no_liaison,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T140,Masc_PlurSub_SingLoc_Long,Les infirmiers près de l'atelier à côté de l'usine finissent.,False,finissent,B04,plural,singular,pp2,Mismatch,liaison_z,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T141,Masc_SingSub_SingLoc_Medium,"À côté du village, l'ami près du jardin est heureux.",False,est,B01,singular,singular,pp1,Match,no_liaison,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T142,Masc_PlurSub_PlurLoc_Long,Les infirmiers près de l'atelier à côté des usines finissent.,False,finissent,B04,plural,plural,pp2,Match,liaison_z,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T143,Fem_SingSub_PlurLoc_Medium,"À côté de la bibliothèque, l'amatrice près des campus est préoccupée.",False,est,B07,singular,plural,pp1,Mismatch,no_liaison,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T144,Filler_Neg,Les médecins ne portent pas les romans.,True,portent,FILLER,plural,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T145,Filler_Neg,Les médecins ne regardent pas les lampes.,True,regardent,FILLER,plural,NA,NA,NA,NA,True,1250,True,Use fillers to prevent structural habituation.
+T146,Filler_Neg,La journaliste ne regarde pas les romans.,True,regarde,FILLER,singular,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T147,Masc_PlurSub_SingLoc_Long,Les étudiants près du musicien à côté de la maison finissent.,False,finissent,B02,plural,singular,pp2,Mismatch,liaison_z,True,2000,True,Normalize pre-verb pause and verb duration across conditions.
+T148,Filler_Neg,La chercheuse ne cherche pas les radios.,True,cherche,FILLER,singular,NA,NA,NA,NA,True,1250,True,Use fillers to prevent structural habituation.
+T149,Fem_PlurSub_SingLoc_Short,"À côté de la route, près du verger, les étudiantes finissent.",False,finissent,B06,plural,singular,pp1,Mismatch,liaison_z,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T150,Masc_PlurSub_SingLoc_Short,"À côté du village, près du jardin, les amis sont heureux.",False,sont,B01,plural,singular,pp1,Mismatch,liaison_z,True,2000,True,Normalize pre-verb pause and verb duration across conditions.
+T151,Filler_SVO,La chercheuse suit la radio.,True,suit,FILLER,singular,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T152,Fem_PlurSub_PlurLoc_Long,Les étudiantes près du verger à côté des routes finissent.,False,finissent,B06,plural,plural,pp2,Match,liaison_z,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T153,Fem_SingSub_SingLoc_Medium,"À côté de la route, l'étudiante près du verger finit.",False,finit,B06,singular,singular,pp1,Match,no_liaison,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T154,Filler_Neg,Les médecins ne portent pas les radios.,True,portent,FILLER,plural,NA,NA,NA,NA,True,1750,True,Use fillers to prevent structural habituation.
+T155,Filler_SVO,Le pilote suit la radio.,True,suit,FILLER,singular,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T156,Filler_SVO,Les journalistes portent le message.,True,portent,FILLER,plural,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T157,Filler_SVO,La musicienne suit le message.,True,suit,FILLER,singular,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T158,Filler_Neg,La musicienne ne aime pas les lampes.,True,aime,FILLER,singular,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T159,Fem_SingSub_SingLoc_Long,L'amie près du jardin à côté de la ville est heureuse.,False,est,B05,singular,singular,pp2,Match,no_liaison,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T160,Masc_SingSub_SingLoc_Medium,"À côté de l'usine, l'infirmier près de l'atelier finit.",False,finit,B04,singular,singular,pp1,Match,no_liaison,True,2000,True,Normalize pre-verb pause and verb duration across conditions.
+T161,Filler_Neg,Le médecin ne aime pas les lampes.,True,aime,FILLER,singular,NA,NA,NA,NA,True,1750,True,Use fillers to prevent structural habituation.
+T162,Filler_Neg,La chercheuse ne trouve pas les messages.,True,trouve,FILLER,singular,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T163,Filler_Neg,Les journalistes ne portent pas les dossiers.,True,portent,FILLER,plural,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T164,Masc_PlurSub_PlurLoc_Long,Les artistes près du professeur à côté des écoles sont contents.,False,sont,B03,plural,plural,pp2,Match,liaison_z,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T165,Masc_PlurSub_PlurLoc_Medium,"À côté de la maison, les étudiants près des musiciens finissent.",False,finissent,B02,plural,plural,pp1,Match,liaison_z,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T166,Filler_Neg,Les journalistes ne cherchent pas les radios.,True,cherchent,FILLER,plural,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T167,Filler_SVO,La chercheuse aime le roman.,True,aime,FILLER,singular,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T168,Filler_SVO,Le médecin aime la lampe.,True,aime,FILLER,singular,NA,NA,NA,NA,True,1750,True,Use fillers to prevent structural habituation.
+T169,Filler_SVO,Le voisin aime la lampe.,True,aime,FILLER,singular,NA,NA,NA,NA,True,1750,True,Use fillers to prevent structural habituation.
+T170,Fem_SingSub_PlurLoc_Short,"À côté de la route, près des vergers, l'étudiante finit.",False,finit,B06,singular,plural,pp1,Mismatch,no_liaison,True,1750,True,Normalize pre-verb pause and verb duration across conditions.
+T171,Fem_PlurSub_PlurLoc_Long,Les infirmières près du quartier à côté des avenues finissent.,False,finissent,B08,plural,plural,pp2,Match,liaison_z,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T172,Fem_SingSub_SingLoc_Long,L'amatrice près du campus à côté de la bibliothèque est préoccupée.,False,est,B07,singular,singular,pp2,Match,no_liaison,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T173,Filler_SVO,Les musiciennes trouvent le dossier.,True,trouvent,FILLER,plural,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T174,Filler_Neg,Les médecins ne suivent pas les photos.,True,suivent,FILLER,plural,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T175,Filler_Neg,La chercheuse ne porte pas les dossiers.,True,porte,FILLER,singular,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T176,Filler_SVO,Les musiciennes suivent la lampe.,True,suivent,FILLER,plural,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T177,Filler_SVO,Les pilotes cherchent la radio.,True,cherchent,FILLER,plural,NA,NA,NA,NA,True,1750,True,Use fillers to prevent structural habituation.
+T178,Masc_PlurSub_PlurLoc_Medium,"À côté de l'usine, les infirmiers près des ateliers finissent.",False,finissent,B04,plural,plural,pp1,Match,liaison_z,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T179,Masc_PlurSub_PlurLoc_Long,Les amis près du jardin à côté des villages sont heureux.,False,sont,B01,plural,plural,pp2,Match,liaison_z,True,1500,True,Normalize pre-verb pause and verb duration across conditions.
+T180,Fem_SingSub_PlurLoc_Long,L'amie près du jardin à côté des villes est heureuse.,False,est,B05,singular,plural,pp2,Mismatch,no_liaison,True,2000,True,Normalize pre-verb pause and verb duration across conditions.
+T181,Filler_Neg,La chercheuse ne suit pas les radios.,True,suit,FILLER,singular,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T182,Filler_SVO,La journaliste aime le dossier.,True,aime,FILLER,singular,NA,NA,NA,NA,True,2000,True,Use fillers to prevent structural habituation.
+T183,Fem_SingSub_SingLoc_Medium,"À côté de la ville, l'amie près du jardin est heureuse.",False,est,B05,singular,singular,pp1,Match,no_liaison,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T184,Filler_SVO,La chercheuse regarde le message.,True,regarde,FILLER,singular,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
+T185,Filler_Neg,Le voisin ne regarde pas les lampes.,True,regarde,FILLER,singular,NA,NA,NA,NA,True,1500,True,Use fillers to prevent structural habituation.
+T186,Fem_SingSub_PlurLoc_Short,"À côté de la ville, près des jardins, l'amie est heureuse.",False,est,B05,singular,plural,pp1,Mismatch,no_liaison,True,2000,True,Normalize pre-verb pause and verb duration across conditions.
+T187,Fem_SingSub_PlurLoc_Medium,"À côté de l'avenue, l'infirmière près des quartiers finit.",False,finit,B08,singular,plural,pp1,Mismatch,no_liaison,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T188,Fem_PlurSub_PlurLoc_Short,"À côté de la ville, près des jardins, les amies sont heureuses.",False,sont,B05,plural,plural,pp1,Match,liaison_z,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T189,Fem_SingSub_PlurLoc_Medium,"À côté de la ville, l'amie près des jardins est heureuse.",False,est,B05,singular,plural,pp1,Mismatch,no_liaison,True,1250,True,Normalize pre-verb pause and verb duration across conditions.
+T190,Masc_SingSub_PlurLoc_Short,"À côté de l'usine, près des ateliers, l'infirmier finit.",False,finit,B04,singular,plural,pp1,Mismatch,no_liaison,True,2000,True,Normalize pre-verb pause and verb duration across conditions.
+T191,Fem_SingSub_PlurLoc_Long,L'infirmière près du quartier à côté des avenues finit.,False,finit,B08,singular,plural,pp2,Mismatch,no_liaison,True,1000,True,Normalize pre-verb pause and verb duration across conditions.
+T192,Filler_Neg,Le médecin ne porte pas les messages.,True,porte,FILLER,singular,NA,NA,NA,NA,True,1000,True,Use fillers to prevent structural habituation.
