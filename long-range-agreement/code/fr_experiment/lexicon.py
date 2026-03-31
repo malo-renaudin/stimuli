@@ -27,7 +27,6 @@ SUBJECT_NOUNS_FEM = [
     {"singular": "étudiante", "plural": "étudiantes", "gender": "f", "semantic": "animate"},
     {"singular": "ingénieure", "plural": "ingénieures", "gender": "f", "semantic": "animate"},
     {"singular": "ouvrière", "plural": "ouvrières", "gender": "f", "semantic": "animate"},
-    {"singular": "oratrice", "plural": "oratrices", "gender": "f", "semantic": "animate"},
     {"singular": "écrivaine", "plural": "écrivaines", "gender": "f", "semantic": "animate"},
     {"singular": "employée", "plural": "employées", "gender": "f", "semantic": "animate"},
     {"singular": "usagère", "plural": "usagères", "gender": "f", "semantic": "animate"},
@@ -51,7 +50,6 @@ PP_NOUNS_MASC = [
     {"singular": "auditorium", "plural": "auditoriums", "gender": "m", "semantic": "place"},
     {"singular": "office", "plural": "offices", "gender": "m", "semantic": "place"},
     {"singular": "abri", "plural": "abris", "gender": "m", "semantic": "place"},
-    {"singular": "îlot", "plural": "îlots", "gender": "m", "semantic": "place"},
     {"singular": "ami", "plural": "amis", "gender": "m", "semantic": "animate"},
     {"singular": "auteur", "plural": "auteurs", "gender": "m", "semantic": "animate"},
     {"singular": "avocat", "plural": "avocats", "gender": "m", "semantic": "animate"},
@@ -69,14 +67,13 @@ PP_NOUNS_FEM = [
     {"singular": "agence", "plural": "agences", "gender": "f", "semantic": "place"},
     {"singular": "église", "plural": "églises", "gender": "f", "semantic": "place"},
     {"singular": "université", "plural": "universités", "gender": "f", "semantic": "place"},
-    {"singular": "oasis", "plural": "oasis", "gender": "f", "semantic": "place"},
     {"singular": "enceinte", "plural": "enceintes", "gender": "f", "semantic": "place"},
     {"singular": "auberge", "plural": "auberges", "gender": "f", "semantic": "place"},
     {"singular": "arène", "plural": "arènes", "gender": "f", "semantic": "place"},
     {"singular": "amie", "plural": "amies", "gender": "f", "semantic": "animate"},
     {"singular": "autrice", "plural": "autrices", "gender": "f", "semantic": "animate"},
+    {"singular": "écrivaine", "plural": "écrivaines", "gender": "f", "semantic": "animate"},
     {"singular": "infirmière", "plural": "infirmières", "gender": "f", "semantic": "animate"},
-    {"singular": "oratrice", "plural": "oratrices", "gender": "f", "semantic": "animate"},
 ]
 
 COPULA = {"lemma": "être", "type": "copula", "singular": "est", "plural": "sont"}
@@ -97,8 +94,8 @@ ADJECTIVES = [
     {"m_sg": "calme", "m_pl": "calmes", "f_sg": "calme", "f_pl": "calmes"},
     {"m_sg": "fiable", "m_pl": "fiables", "f_sg": "fiable", "f_pl": "fiables"},
     {"m_sg": "serein", "m_pl": "sereins", "f_sg": "sereine", "f_pl": "sereines"},
-    {"m_sg": "utile", "m_pl": "utiles", "f_sg": "utile", "f_pl": "utiles"},
-    {"m_sg": "stable", "m_pl": "stables", "f_sg": "stable", "f_pl": "stables"},
+    {"m_sg": "attentif", "m_pl": "attentifs", "f_sg": "attentive", "f_pl": "attentives"},
+    {"m_sg": "concentré", "m_pl": "concentrés", "f_sg": "concentrée", "f_pl": "concentrées"},
 ]
 
 OBJECTS_BY_VERB = {
@@ -115,7 +112,7 @@ SEMANTIC_FIELDS = ["education", "transport", "travail", "culture"]
 SUBJECTS_BY_FIELD = {
     "education": {
         "m": ["élève", "auteur", "analyste", "économiste"],
-        "f": ["étudiante", "autrice", "analyste", "oratrice"],
+        "f": ["étudiante", "autrice", "analyste", "écrivaine"],
     },
     "transport": {
         "m": ["usager", "oncle", "artisan", "ami"],
@@ -137,8 +134,8 @@ PLACES_BY_FIELD = {
         "f": ["école", "université", "entrée", "allée"],
     },
     "transport": {
-        "m": ["aéroport", "arrêt", "îlot", "abri"],
-        "f": ["avenue", "aire", "impasse", "oasis"],
+        "m": ["aéroport", "arrêt", "abri", "entrepôt"],
+        "f": ["avenue", "aire", "impasse", "agence"],
     },
     "travail": {
         "m": ["atelier", "immeuble", "office", "entrepôt"],
@@ -162,19 +159,19 @@ SCENARIO_FRAMES = [
         "id": "education_route",
         "subject": {
             "m": ["élève", "auteur", "analyste", "économiste"],
-            "f": ["étudiante", "autrice", "analyste", "oratrice"],
+            "f": ["étudiante", "autrice", "analyste", "écrivaine"],
         },
         "pp1": {
             "m": ["institut", "auditorium", "établissement"],
-            "f": ["université", "école", "entrée"],
+            "f": ["université", "école"],
         },
         "pp2": {
-            "m": ["auditorium", "établissement", "institut"],
-            "f": ["allée", "université", "école"],
+            "m": ["institut", "établissement"],
+            "f": ["entrée", "allée", "école"],
         },
-        "pp1_prepositions": ["à", "devant", "à gauche de"],
-        "pp2_prepositions": ["à", "devant"],
-        "preposition_pairs": [("devant", "à"), ("à", "devant"), ("à gauche de", "devant")],
+        "pp1_prepositions": ["dans", "devant", "à côté de"],
+        "pp2_prepositions": ["près de", "devant", "dans"],
+        "preposition_pairs": [("dans", "près de"), ("dans", "devant"), ("à côté de", "dans")],
         "lexical_verbs": ["lire", "réussir", "finir"],
     },
     {
@@ -184,16 +181,16 @@ SCENARIO_FRAMES = [
             "f": ["usagère", "amie", "aide", "employée"],
         },
         "pp1": {
-            "m": ["aéroport", "abri"],
-            "f": ["entrée", "allée"],
+            "m": ["aéroport", "abri", "entrepôt"],
+            "f": ["avenue", "impasse", "agence"],
         },
         "pp2": {
-            "m": ["aéroport", "abri"],
-            "f": ["entrée", "allée"],
+            "m": ["aéroport", "abri", "entrepôt"],
+            "f": ["avenue", "impasse", "agence"],
         },
-        "pp1_prepositions": ["à", "devant", "en face de"],
-        "pp2_prepositions": ["à", "loin de"],
-        "preposition_pairs": [("devant", "loin de"), ("à", "loin de"), ("en face de", "loin de")],
+        "pp1_prepositions": ["dans", "devant", "en face de"],
+        "pp2_prepositions": ["près de", "loin de", "dans"],
+        "preposition_pairs": [("dans", "près de"), ("devant", "loin de"), ("en face de", "dans")],
         "lexical_verbs": ["prendre", "choisir"],
     },
     {
@@ -211,8 +208,8 @@ SCENARIO_FRAMES = [
             "f": ["usine", "agence", "enceinte"],
         },
         "pp1_prepositions": ["dans", "à côté de"],
-        "pp2_prepositions": ["à", "loin de"],
-        "preposition_pairs": [("dans", "à"), ("à côté de", "à"), ("dans", "loin de")],
+        "pp2_prepositions": ["dans", "loin de", "près de"],
+        "preposition_pairs": [("dans", "près de"), ("à côté de", "dans"), ("dans", "loin de")],
         "lexical_verbs": ["finir", "lire", "réussir"],
     },
     {
@@ -222,35 +219,35 @@ SCENARIO_FRAMES = [
             "f": ["actrice", "animatrice", "écrivaine", "organisatrice"],
         },
         "pp1": {
-            "m": ["amphithéâtre", "observatoire", "auditorium"],
+            "m": ["amphithéâtre", "auditorium"],
             "f": ["arène", "église"],
         },
         "pp2": {
-            "m": ["amphithéâtre", "observatoire", "auditorium"],
-            "f": ["arène", "église"],
+            "m": ["observatoire", "auditorium", "amphithéâtre"],
+            "f": ["église", "arène"],
         },
-        "pp1_prepositions": ["dans", "devant"],
-        "pp2_prepositions": ["derrière", "devant"],
-        "preposition_pairs": [("dans", "derrière"), ("devant", "devant"), ("dans", "devant")],
+        "pp1_prepositions": ["dans", "devant", "près de"],
+        "pp2_prepositions": ["derrière", "près de", "devant"],
+        "preposition_pairs": [("dans", "près de"), ("devant", "près de"), ("dans", "derrière")],
         "lexical_verbs": ["lire", "boire"],
     },
     {
         "id": "social_exchange",
         "subject": {
             "m": ["ami", "avocat", "analyste", "auteur"],
-            "f": ["amie", "autrice", "infirmière", "oratrice"],
+            "f": ["amie", "autrice", "infirmière", "écrivaine"],
         },
         "pp1": {
             "m": ["ami", "auteur", "avocat", "oncle"],
-            "f": ["amie", "autrice", "infirmière", "oratrice"],
+            "f": ["amie", "autrice", "infirmière", "écrivaine"],
         },
         "pp2": {
-            "m": ["institut", "auditorium", "office"],
-            "f": ["agence", "université", "entrée"],
+            "m": ["auditorium", "office", "immeuble"],
+            "f": ["agence", "université", "allée"],
         },
         "pp1_prepositions": ["chez"],
-        "pp2_prepositions": ["à", "à droite de"],
-        "preposition_pairs": [("chez", "à"), ("chez", "à droite de")],
+        "pp2_prepositions": ["dans", "près de", "à droite de"],
+        "preposition_pairs": [("chez", "dans"), ("chez", "près de"), ("chez", "à droite de")],
         "lexical_verbs": ["lire", "boire"],
     },
 ]
