@@ -1,5 +1,6 @@
 from fr_experiment.config import DELAY_OPTIONS_MS, LEXICAL_COMBOS_PER_RUN, PREPOSITIONS, RUN_COUNT, STRUCTURES
 from fr_experiment.language import starts_with_vowel
+from fr_experiment.lexicon import PP_NOUNS_FEM, PP_NOUNS_MASC, SUBJECT_NOUNS_FEM, SUBJECT_NOUNS_MASC
 
 
 def assign_delays(trials, rng):
@@ -7,7 +8,51 @@ def assign_delays(trials, rng):
         trial["Delay_ms"] = rng.choice(DELAY_OPTIONS_MS)
 
 
+def _enforce_gender_distinct_nouns():
+    subject_m = {noun["singular"] for noun in SUBJECT_NOUNS_MASC}
+    subject_f = {noun["singular"] for noun in SUBJECT_NOUNS_FEM}
+    pp_m = {noun["singular"] for noun in PP_NOUNS_MASC}
+    pp_f = {noun["singular"] for noun in PP_NOUNS_FEM}
+
+    overlap_subject = sorted(subject_m & subject_f)
+    overlap_pp = sorted(pp_m & pp_f)
+    if overlap_subject:
+        raise RuntimeError(
+            "Subject noun lemmas must differ across genders. Overlap: "
+            + ", ".join(overlap_subject)
+        )
+    if overlap_pp:
+        raise RuntimeError(
+            "PP noun lemmas must differ across genders. Overlap: "
+            + ", ".join(overlap_pp)
+        )
+
+    # Known m/f pairs that are considered too close phonetically for this experiment.
+    banned_pairs = {
+        ("ami", "amie"),
+        ("analyste", "analyste"),
+        ("employé", "employée"),
+        ("ingénieur", "ingénieure"),
+        ("élève", "élève"),
+    }
+
+    violations = []
+    for m_lemma, f_lemma in banned_pairs:
+        if m_lemma in subject_m and f_lemma in subject_f:
+            violations.append(f"subject:{m_lemma}/{f_lemma}")
+        if m_lemma in pp_m and f_lemma in pp_f:
+            violations.append(f"pp:{m_lemma}/{f_lemma}")
+
+    if violations:
+        raise RuntimeError(
+            "Detected forbidden m/f homophone noun pairs: "
+            + ", ".join(sorted(violations))
+        )
+
+
 def validate_trials(all_trials):
+    _enforce_gender_distinct_nouns()
+
     run_ids = sorted({row["Run_ID"] for row in all_trials})
     if len(run_ids) != RUN_COUNT:
         raise RuntimeError(f"Expected {RUN_COUNT} runs, got {len(run_ids)}")
@@ -59,6 +104,9 @@ def validate_trials(all_trials):
     for row in all_trials:
         if row["PP1_Preposition"] not in PREPOSITIONS or row["PP2_Preposition"] not in PREPOSITIONS:
             raise RuntimeError("Detected invalid one-word preposition.")
+
+        if row["PP1_Preposition"] == "chez" and row["PP2_Preposition"] == "dans":
+            raise RuntimeError("Detected forbidden preposition pair: chez + dans.")
 
         for noun in [row["Subject_Lemma"], row["PP1_Lemma"], row["PP2_Lemma"]]:
             if not starts_with_vowel(noun):

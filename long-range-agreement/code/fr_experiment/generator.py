@@ -213,6 +213,8 @@ def generate_lexical_combos_for_run(run_id, rng):
                 for pp1_preposition, pp2_preposition in pair_candidates:
                     if pp1_preposition == "chez" and pp2_preposition == "chez":
                         continue
+                    if pp1_preposition == "chez" and pp2_preposition == "dans":
+                        continue
 
                     pp1, pp2 = pick_distinct_frame_places_with_prepositions(
                         frame,
@@ -241,6 +243,8 @@ def generate_lexical_combos_for_run(run_id, rng):
             verb = rng.choice(verb_pool)
 
             if pp1_preposition == "chez" and pp2_preposition == "chez":
+                break
+            if pp1_preposition == "chez" and pp2_preposition == "dans":
                 break
 
             object_dp = None

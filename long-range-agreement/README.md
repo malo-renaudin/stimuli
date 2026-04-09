@@ -46,6 +46,8 @@ Dans chaque run (sur les lignes `short`, qui indexent les 16 bases lexicales) :
 ### Contraintes lexicales et phonologiques
 
 - les lemmes de sujet, PP1 et PP2 doivent commencer par une voyelle (validation stricte)
+- les formes masculines et féminines doivent être phonologiquement distinctes dans les inventaires nominaux (sujets et PP)
+- cette contrainte est validée automatiquement (interdiction de mêmes lemmes m/f et de paires homophones explicitement listées)
 - l'adjectif post-copule est un seul mot
 - le complément post-verbe lexical est exactement 2 mots (COD)
 

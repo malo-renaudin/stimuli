@@ -1,16 +1,16 @@
 SUBJECT_NOUNS_MASC = [
-    {"singular": "ami", "plural": "amis", "gender": "m", "semantic": "animate"},
+    {"singular": "époux", "plural": "époux", "gender": "m", "semantic": "animate"},
     {"singular": "auteur", "plural": "auteurs", "gender": "m", "semantic": "animate"},
     {"singular": "acteur", "plural": "acteurs", "gender": "m", "semantic": "animate"},
     {"singular": "avocat", "plural": "avocats", "gender": "m", "semantic": "animate"},
-    {"singular": "analyste", "plural": "analystes", "gender": "m", "semantic": "animate"},
+    {"singular": "éditeur", "plural": "éditeurs", "gender": "m", "semantic": "animate"},
     {"singular": "athlète", "plural": "athlètes", "gender": "m", "semantic": "animate"},
-    {"singular": "élève", "plural": "élèves", "gender": "m", "semantic": "animate"},
-    {"singular": "ingénieur", "plural": "ingénieurs", "gender": "m", "semantic": "animate"},
+    {"singular": "étudiant", "plural": "étudiants", "gender": "m", "semantic": "animate"},
+    {"singular": "électricien", "plural": "électriciens", "gender": "m", "semantic": "animate"},
     {"singular": "ouvrier", "plural": "ouvriers", "gender": "m", "semantic": "animate"},
     {"singular": "orateur", "plural": "orateurs", "gender": "m", "semantic": "animate"},
     {"singular": "écrivain", "plural": "écrivains", "gender": "m", "semantic": "animate"},
-    {"singular": "employé", "plural": "employés", "gender": "m", "semantic": "animate"},
+    {"singular": "épicier", "plural": "épiciers", "gender": "m", "semantic": "animate"},
     {"singular": "usager", "plural": "usagers", "gender": "m", "semantic": "animate"},
     {"singular": "oncle", "plural": "oncles", "gender": "m", "semantic": "animate"},
     {"singular": "artisan", "plural": "artisans", "gender": "m", "semantic": "animate"},
@@ -18,17 +18,17 @@ SUBJECT_NOUNS_MASC = [
 ]
 
 SUBJECT_NOUNS_FEM = [
-    {"singular": "amie", "plural": "amies", "gender": "f", "semantic": "animate"},
+    {"singular": "épouse", "plural": "épouses", "gender": "f", "semantic": "animate"},
     {"singular": "actrice", "plural": "actrices", "gender": "f", "semantic": "animate"},
     {"singular": "autrice", "plural": "autrices", "gender": "f", "semantic": "animate"},
-    {"singular": "analyste", "plural": "analystes", "gender": "f", "semantic": "animate"},
+    {"singular": "éditrice", "plural": "éditrices", "gender": "f", "semantic": "animate"},
     {"singular": "aide", "plural": "aides", "gender": "f", "semantic": "animate"},
     {"singular": "aventurière", "plural": "aventurières", "gender": "f", "semantic": "animate"},
     {"singular": "étudiante", "plural": "étudiantes", "gender": "f", "semantic": "animate"},
-    {"singular": "ingénieure", "plural": "ingénieures", "gender": "f", "semantic": "animate"},
+    {"singular": "électricienne", "plural": "électriciennes", "gender": "f", "semantic": "animate"},
     {"singular": "ouvrière", "plural": "ouvrières", "gender": "f", "semantic": "animate"},
     {"singular": "écrivaine", "plural": "écrivaines", "gender": "f", "semantic": "animate"},
-    {"singular": "employée", "plural": "employées", "gender": "f", "semantic": "animate"},
+    {"singular": "épicière", "plural": "épicières", "gender": "f", "semantic": "animate"},
     {"singular": "usagère", "plural": "usagères", "gender": "f", "semantic": "animate"},
     {"singular": "infirmière", "plural": "infirmières", "gender": "f", "semantic": "animate"},
     {"singular": "animatrice", "plural": "animatrices", "gender": "f", "semantic": "animate"},
@@ -50,7 +50,7 @@ PP_NOUNS_MASC = [
     {"singular": "auditorium", "plural": "auditoriums", "gender": "m", "semantic": "place"},
     {"singular": "office", "plural": "offices", "gender": "m", "semantic": "place"},
     {"singular": "abri", "plural": "abris", "gender": "m", "semantic": "place"},
-    {"singular": "ami", "plural": "amis", "gender": "m", "semantic": "animate"},
+    {"singular": "époux", "plural": "époux", "gender": "m", "semantic": "animate"},
     {"singular": "auteur", "plural": "auteurs", "gender": "m", "semantic": "animate"},
     {"singular": "avocat", "plural": "avocats", "gender": "m", "semantic": "animate"},
     {"singular": "oncle", "plural": "oncles", "gender": "m", "semantic": "animate"},
@@ -70,7 +70,7 @@ PP_NOUNS_FEM = [
     {"singular": "enceinte", "plural": "enceintes", "gender": "f", "semantic": "place"},
     {"singular": "auberge", "plural": "auberges", "gender": "f", "semantic": "place"},
     {"singular": "arène", "plural": "arènes", "gender": "f", "semantic": "place"},
-    {"singular": "amie", "plural": "amies", "gender": "f", "semantic": "animate"},
+    {"singular": "épouse", "plural": "épouses", "gender": "f", "semantic": "animate"},
     {"singular": "autrice", "plural": "autrices", "gender": "f", "semantic": "animate"},
     {"singular": "écrivaine", "plural": "écrivaines", "gender": "f", "semantic": "animate"},
     {"singular": "infirmière", "plural": "infirmières", "gender": "f", "semantic": "animate"},
@@ -111,16 +111,16 @@ SEMANTIC_FIELDS = ["education", "transport", "travail", "culture"]
 
 SUBJECTS_BY_FIELD = {
     "education": {
-        "m": ["élève", "auteur", "analyste", "économiste"],
-        "f": ["étudiante", "autrice", "analyste", "écrivaine"],
+        "m": ["étudiant", "auteur", "éditeur", "économiste"],
+        "f": ["étudiante", "autrice", "éditrice", "écrivaine"],
     },
     "transport": {
-        "m": ["usager", "oncle", "artisan", "ami"],
-        "f": ["usagère", "amie", "aide", "employée"],
+        "m": ["usager", "oncle", "artisan", "époux"],
+        "f": ["usagère", "épouse", "aide", "épicière"],
     },
     "travail": {
-        "m": ["employé", "ingénieur", "ouvrier", "avocat"],
-        "f": ["employée", "ingénieure", "ouvrière", "aide"],
+        "m": ["épicier", "électricien", "ouvrier", "avocat"],
+        "f": ["épicière", "électricienne", "ouvrière", "aide"],
     },
     "culture": {
         "m": ["acteur", "orateur", "écrivain", "auteur"],
@@ -158,8 +158,8 @@ SCENARIO_FRAMES = [
     {
         "id": "education_route",
         "subject": {
-            "m": ["élève", "auteur", "analyste", "économiste"],
-            "f": ["étudiante", "autrice", "analyste", "écrivaine"],
+            "m": ["étudiant", "auteur", "éditeur", "économiste"],
+            "f": ["étudiante", "autrice", "éditrice", "écrivaine"],
         },
         "pp1": {
             "m": ["institut", "auditorium", "établissement"],
@@ -177,8 +177,8 @@ SCENARIO_FRAMES = [
     {
         "id": "transport_route",
         "subject": {
-            "m": ["usager", "ami", "oncle", "artisan"],
-            "f": ["usagère", "amie", "aide", "employée"],
+            "m": ["usager", "époux", "oncle", "artisan"],
+            "f": ["usagère", "épouse", "aide", "épicière"],
         },
         "pp1": {
             "m": ["aéroport", "abri", "entrepôt"],
@@ -196,8 +196,8 @@ SCENARIO_FRAMES = [
     {
         "id": "workplace_indoor",
         "subject": {
-            "m": ["employé", "ingénieur", "ouvrier", "avocat"],
-            "f": ["employée", "ingénieure", "ouvrière", "aide"],
+            "m": ["épicier", "électricien", "ouvrier", "avocat"],
+            "f": ["épicière", "électricienne", "ouvrière", "aide"],
         },
         "pp1": {
             "m": ["atelier", "immeuble", "office", "entrepôt"],
@@ -234,12 +234,12 @@ SCENARIO_FRAMES = [
     {
         "id": "social_exchange",
         "subject": {
-            "m": ["ami", "avocat", "analyste", "auteur"],
-            "f": ["amie", "autrice", "infirmière", "écrivaine"],
+            "m": ["époux", "avocat", "éditeur", "auteur"],
+            "f": ["épouse", "autrice", "infirmière", "écrivaine"],
         },
         "pp1": {
-            "m": ["ami", "auteur", "avocat", "oncle"],
-            "f": ["amie", "autrice", "infirmière", "écrivaine"],
+            "m": ["époux", "auteur", "avocat", "oncle"],
+            "f": ["épouse", "autrice", "infirmière", "écrivaine"],
         },
         "pp2": {
             "m": ["auditorium", "office", "immeuble"],
