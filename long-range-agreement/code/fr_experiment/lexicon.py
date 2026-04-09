@@ -156,98 +156,264 @@ VERBS_BY_FIELD = {
 
 SCENARIO_FRAMES = [
     {
-        "id": "education_route",
+        "id": "education_reading_hall",
         "subject": {
-            "m": ["étudiant", "auteur", "éditeur", "économiste"],
-            "f": ["étudiante", "autrice", "éditrice", "écrivaine"],
+            "m": ["étudiant", "éditeur", "auteur"],
+            "f": ["étudiante", "éditrice", "autrice"],
         },
-        "pp1": {
-            "m": ["institut", "auditorium", "établissement"],
-            "f": ["université", "école"],
+        "pp1_options": {
+            "m": [
+                {"lemma": "institut", "prepositions": ["dans"]},
+                {"lemma": "auditorium", "prepositions": ["dans"]},
+            ],
+            "f": [
+                {"lemma": "université", "prepositions": ["dans"]},
+                {"lemma": "école", "prepositions": ["dans"]},
+            ],
         },
-        "pp2": {
-            "m": ["institut", "établissement"],
-            "f": ["entrée", "allée", "école"],
+        "pp2_options": {
+            "m": [
+                {"lemma": "établissement", "prepositions": ["près de", "devant"]},
+            ],
+            "f": [
+                {"lemma": "entrée", "prepositions": ["près de"]},
+                {"lemma": "école", "prepositions": ["devant"]},
+            ],
         },
-        "pp1_prepositions": ["dans", "devant", "à côté de"],
-        "pp2_prepositions": ["près de", "devant", "dans"],
-        "preposition_pairs": [("dans", "près de"), ("dans", "devant"), ("à côté de", "dans")],
-        "lexical_verbs": ["lire", "réussir", "finir"],
+        "preposition_pairs": [("dans", "près de"), ("dans", "devant")],
+        "lexical_verbs": ["lire", "finir"],
+        "objects_by_verb": {
+            "lire": ["un article", "un roman"],
+            "finir": ["un dossier", "un article"],
+        },
     },
     {
-        "id": "transport_route",
+        "id": "education_exam_session",
         "subject": {
-            "m": ["usager", "époux", "oncle", "artisan"],
-            "f": ["usagère", "épouse", "aide", "épicière"],
+            "m": ["étudiant", "éditeur", "économiste"],
+            "f": ["étudiante", "éditrice"],
         },
-        "pp1": {
-            "m": ["aéroport", "abri", "entrepôt"],
-            "f": ["avenue", "impasse", "agence"],
+        "pp1_options": {
+            "m": [
+                {"lemma": "institut", "prepositions": ["dans"]},
+                {"lemma": "établissement", "prepositions": ["dans"]},
+            ],
+            "f": [
+                {"lemma": "université", "prepositions": ["dans"]},
+                {"lemma": "école", "prepositions": ["dans"]},
+            ],
         },
-        "pp2": {
-            "m": ["aéroport", "abri", "entrepôt"],
-            "f": ["avenue", "impasse", "agence"],
+        "pp2_options": {
+            "m": [
+                {"lemma": "établissement", "prepositions": ["près de", "devant"]},
+                {"lemma": "institut", "prepositions": ["près de"]},
+            ],
+            "f": [
+                {"lemma": "entrée", "prepositions": ["près de"]},
+                {"lemma": "école", "prepositions": ["devant"]},
+            ],
         },
-        "pp1_prepositions": ["dans", "devant", "en face de"],
-        "pp2_prepositions": ["près de", "loin de", "dans"],
-        "preposition_pairs": [("dans", "près de"), ("devant", "loin de"), ("en face de", "dans")],
-        "lexical_verbs": ["prendre", "choisir"],
+        "preposition_pairs": [("dans", "près de"), ("dans", "devant")],
+        "lexical_verbs": ["réussir", "finir"],
+        "objects_by_verb": {
+            "réussir": ["un examen", "un test"],
+            "finir": ["un exercice", "un dossier"],
+        },
     },
     {
-        "id": "workplace_indoor",
+        "id": "workplace_office_review",
         "subject": {
-            "m": ["épicier", "électricien", "ouvrier", "avocat"],
-            "f": ["épicière", "électricienne", "ouvrière", "aide"],
+            "m": ["avocat", "éditeur", "économiste"],
+            "f": ["autrice", "éditrice", "aide"],
         },
-        "pp1": {
-            "m": ["atelier", "immeuble", "office", "entrepôt"],
-            "f": ["agence", "usine", "enceinte"],
+        "pp1_options": {
+            "m": [
+                {"lemma": "immeuble", "prepositions": ["dans"]},
+                {"lemma": "office", "prepositions": ["dans"]},
+                {"lemma": "établissement", "prepositions": ["dans"]},
+            ],
+            "f": [
+                {"lemma": "agence", "prepositions": ["dans"]},
+                {"lemma": "université", "prepositions": ["dans"]},
+            ],
         },
-        "pp2": {
-            "m": ["office", "atelier", "immeuble"],
-            "f": ["usine", "agence", "enceinte"],
+        "pp2_options": {
+            "m": [
+                {"lemma": "office", "prepositions": ["près de"]},
+                {"lemma": "immeuble", "prepositions": ["près de"]},
+                {"lemma": "établissement", "prepositions": ["près de"]},
+            ],
+            "f": [
+                {"lemma": "agence", "prepositions": ["près de"]},
+                {"lemma": "entrée", "prepositions": ["près de"]},
+            ],
         },
-        "pp1_prepositions": ["dans", "à côté de"],
-        "pp2_prepositions": ["dans", "loin de", "près de"],
-        "preposition_pairs": [("dans", "près de"), ("à côté de", "dans"), ("dans", "loin de")],
+        "preposition_pairs": [("dans", "près de")],
         "lexical_verbs": ["finir", "lire", "réussir"],
+        "objects_by_verb": {
+            "lire": ["un email", "un dossier"],
+            "finir": ["un dossier", "un article"],
+            "réussir": ["un projet", "un test"],
+        },
     },
     {
-        "id": "culture_scene",
+        "id": "workplace_industrial_task",
         "subject": {
-            "m": ["acteur", "orateur", "écrivain", "auteur"],
-            "f": ["actrice", "animatrice", "écrivaine", "organisatrice"],
+            "m": ["électricien", "ouvrier", "épicier"],
+            "f": ["électricienne", "ouvrière", "épicière"],
         },
-        "pp1": {
-            "m": ["amphithéâtre", "auditorium"],
-            "f": ["arène", "église"],
+        "pp1_options": {
+            "m": [
+                {"lemma": "atelier", "prepositions": ["dans"]},
+                {"lemma": "entrepôt", "prepositions": ["dans"]},
+            ],
+            "f": [
+                {"lemma": "usine", "prepositions": ["dans"]},
+                {"lemma": "enceinte", "prepositions": ["dans"]},
+            ],
         },
-        "pp2": {
-            "m": ["observatoire", "auditorium", "amphithéâtre"],
-            "f": ["église", "arène"],
+        "pp2_options": {
+            "m": [
+                {"lemma": "office", "prepositions": ["près de"]},
+                {"lemma": "atelier", "prepositions": ["loin de"]},
+            ],
+            "f": [
+                {"lemma": "usine", "prepositions": ["près de"]},
+                {"lemma": "agence", "prepositions": ["près de"]},
+            ],
         },
-        "pp1_prepositions": ["dans", "devant", "près de"],
-        "pp2_prepositions": ["derrière", "près de", "devant"],
-        "preposition_pairs": [("dans", "près de"), ("devant", "près de"), ("dans", "derrière")],
-        "lexical_verbs": ["lire", "boire"],
+        "preposition_pairs": [("dans", "près de"), ("dans", "loin de")],
+        "lexical_verbs": ["finir"],
+        "objects_by_verb": {
+            "finir": ["un dossier", "un exercice"],
+        },
     },
     {
-        "id": "social_exchange",
+        "id": "transport_terminal_commute",
         "subject": {
-            "m": ["époux", "avocat", "éditeur", "auteur"],
-            "f": ["épouse", "autrice", "infirmière", "écrivaine"],
+            "m": ["artisan", "usager", "époux"],
+            "f": ["usagère", "épouse", "aide"],
         },
-        "pp1": {
-            "m": ["époux", "auteur", "avocat", "oncle"],
-            "f": ["épouse", "autrice", "infirmière", "écrivaine"],
+        "pp1_options": {
+            "m": [
+                {"lemma": "aéroport", "prepositions": ["dans"]},
+                {"lemma": "abri", "prepositions": ["devant"]},
+            ],
+            "f": [
+                {"lemma": "agence", "prepositions": ["dans"]},
+                {"lemma": "impasse", "prepositions": ["dans"]},
+            ],
         },
-        "pp2": {
-            "m": ["auditorium", "office", "immeuble"],
-            "f": ["agence", "université", "allée"],
+        "pp2_options": {
+            "m": [
+                {"lemma": "abri", "prepositions": ["près de"]},
+                {"lemma": "aéroport", "prepositions": ["près de"]},
+            ],
+            "f": [
+                {"lemma": "agence", "prepositions": ["près de"]},
+                {"lemma": "avenue", "prepositions": ["près de"]},
+            ],
         },
-        "pp1_prepositions": ["chez"],
-        "pp2_prepositions": ["dans", "près de", "à droite de"],
-        "preposition_pairs": [("chez", "dans"), ("chez", "près de"), ("chez", "à droite de")],
-        "lexical_verbs": ["lire", "boire"],
+        "preposition_pairs": [("dans", "près de"), ("devant", "près de")],
+        "lexical_verbs": ["prendre", "choisir"],
+        "objects_by_verb": {
+            "prendre": ["un bus", "un taxi", "un train"],
+            "choisir": ["un trajet", "une option"],
+        },
+    },
+    {
+        "id": "transport_route_planning",
+        "subject": {
+            "m": ["artisan", "usager", "oncle"],
+            "f": ["usagère", "épouse", "aide"],
+        },
+        "pp1_options": {
+            "m": [
+                {"lemma": "aéroport", "prepositions": ["dans"]},
+            ],
+            "f": [
+                {"lemma": "impasse", "prepositions": ["dans"]},
+                {"lemma": "avenue", "prepositions": ["devant"]},
+            ],
+        },
+        "pp2_options": {
+            "m": [
+                {"lemma": "abri", "prepositions": ["près de"]},
+            ],
+            "f": [
+                {"lemma": "avenue", "prepositions": ["près de"]},
+                {"lemma": "agence", "prepositions": ["près de"]},
+            ],
+        },
+        "preposition_pairs": [("dans", "près de"), ("devant", "près de")],
+        "lexical_verbs": ["prendre", "choisir"],
+        "objects_by_verb": {
+            "prendre": ["un bus", "un train"],
+            "choisir": ["un trajet", "une option"],
+        },
+    },
+    {
+        "id": "culture_stage_event",
+        "subject": {
+            "m": ["acteur", "orateur", "auteur"],
+            "f": ["actrice", "animatrice", "organisatrice"],
+        },
+        "pp1_options": {
+            "m": [
+                {"lemma": "amphithéâtre", "prepositions": ["dans"]},
+                {"lemma": "auditorium", "prepositions": ["dans"]},
+            ],
+            "f": [
+                {"lemma": "arène", "prepositions": ["dans"]},
+                {"lemma": "église", "prepositions": ["devant"]},
+            ],
+        },
+        "pp2_options": {
+            "m": [
+                {"lemma": "amphithéâtre", "prepositions": ["près de"]},
+                {"lemma": "observatoire", "prepositions": ["près de"]},
+            ],
+            "f": [
+                {"lemma": "arène", "prepositions": ["près de"]},
+                {"lemma": "église", "prepositions": ["derrière"]},
+            ],
+        },
+        "preposition_pairs": [("dans", "près de"), ("dans", "derrière"), ("devant", "près de")],
+        "lexical_verbs": ["boire"],
+        "objects_by_verb": {
+            "boire": ["un café", "un jus"],
+        },
+    },
+    {
+        "id": "culture_reading_event",
+        "subject": {
+            "m": ["auteur", "écrivain", "orateur"],
+            "f": ["autrice", "écrivaine", "organisatrice"],
+        },
+        "pp1_options": {
+            "m": [
+                {"lemma": "auditorium", "prepositions": ["dans"]},
+                {"lemma": "amphithéâtre", "prepositions": ["dans"]},
+            ],
+            "f": [
+                {"lemma": "université", "prepositions": ["dans"]},
+                {"lemma": "église", "prepositions": ["devant"]},
+            ],
+        },
+        "pp2_options": {
+            "m": [
+                {"lemma": "établissement", "prepositions": ["devant", "près de"]},
+                {"lemma": "observatoire", "prepositions": ["près de"]},
+            ],
+            "f": [
+                {"lemma": "école", "prepositions": ["devant", "près de"]},
+                {"lemma": "entrée", "prepositions": ["près de"]},
+            ],
+        },
+        "preposition_pairs": [("dans", "près de"), ("dans", "devant"), ("devant", "près de")],
+        "lexical_verbs": ["lire"],
+        "objects_by_verb": {
+            "lire": ["un article", "un roman"],
+        },
     },
 ]

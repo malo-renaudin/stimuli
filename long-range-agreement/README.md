@@ -77,7 +77,9 @@ Inventaire actuel :
 Règles :
 
 - les noms animés prennent `chez`
-- les noms de lieu utilisent des options compatibles sémantiquement (`PLACE_PREPOSITION_OPTIONS`)
+- les noms de lieu gardent une compatibilité sémantique globale (`PLACE_PREPOSITION_OPTIONS`), mais la génération passe désormais d'abord par des combinaisons explicites nom + préposition dans les `SCENARIO_FRAMES`
+- les `SCENARIO_FRAMES` décrivent maintenant des micro-scénarios plus serrés (p. ex. lecture en contexte académique, trajet depuis un pôle de transport, tâche en contexte professionnel)
+- les compléments d'objet des verbes lexicaux sont choisis au niveau du scénario (`objects_by_verb`) plutôt qu'uniquement au niveau du lemme verbal
 - en structure `long`, les prépositions statiques (`dans`, `chez`) sont placées avant les relationnelles quand les deux types coexistent
 
 ## Comment les stimuli sont créés
@@ -87,8 +89,8 @@ Pipeline principal :
 1. Construire les patrons de nombres (`2 x 2 x 2 = 8`).
 2. Dupliquer chaque patron en `grammatical` et `violation`.
 3. Assigner un plan verbal équilibré (`8 copula + 4 lexical_2 + 4 lexical_3`).
-4. Tirer des candidats via des `SCENARIO_FRAMES` (sujet/PP1/PP2 + paires de prépositions + verbes autorisés).
-5. Filtrer les candidats par compatibilité prépositionnelle et distinctivité des noms.
+4. Tirer des candidats via des `SCENARIO_FRAMES` où chaque slot PP contient des bundles explicites `lemme + prépositions autorisées`, et où les verbes lexicaux ont des objets compatibles avec le micro-scénario.
+5. Filtrer ces candidats par compatibilité morpho-syntaxique finale et distinctivité des noms.
 6. Construire les 3 réalisations de structure pour chaque base lexicale :
    - `long`: `Sujet PP1 PP2 Verbe Suite`
    - `medium`: `PP1, sujet PP2 Verbe Suite`

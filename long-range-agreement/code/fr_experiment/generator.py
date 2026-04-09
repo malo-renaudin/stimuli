@@ -63,6 +63,13 @@ def pick_object_for_verb(verb, rng):
     return rng.choice(choices)
 
 
+def pick_object_for_frame(frame, verb, rng):
+    frame_choices = frame.get("objects_by_verb", {}).get(verb["lemma"])
+    if frame_choices:
+        return rng.choice(frame_choices)
+    return pick_object_for_verb(verb, rng)
+
+
 def build_lemma_index(items):
     return {item["singular"]: item for item in items}
 
@@ -76,22 +83,15 @@ def candidate_verbs_for_frame(frame, verb_type):
     return [verb for verb in THIRD_GROUP_VERBS if verb["lemma"] in allowed]
 
 
-def pick_from_lemma_pool(lemmas, gender, index_m, index_f, rng):
-    pool = [index_m[l] if gender == "m" else index_f[l] for l in lemmas]
-    if not pool:
-        return None
-    return rng.choice(pool)
-
-
-def pick_distinct_frame_places(frame, pp1_gender, pp2_gender, pp_index_m, pp_index_f, rng):
-    pp1 = pick_from_lemma_pool(frame["pp1"][pp1_gender], pp1_gender, pp_index_m, pp_index_f, rng)
-    pp2_pool = [pp_index_m[l] if pp2_gender == "m" else pp_index_f[l] for l in frame["pp2"][pp2_gender]]
-    if pp1 is None or not pp2_pool:
-        return None, None
-    pp2_candidates = [candidate for candidate in pp2_pool if candidate["singular"] != pp1["singular"]]
-    if not pp2_candidates:
-        return None, None
-    return pp1, rng.choice(pp2_candidates)
+def frame_slot_candidates(frame, slot_key, gender, noun_index, preposition, number):
+    candidates = []
+    for option in frame[slot_key][gender]:
+        noun = noun_index[option["lemma"]]
+        allowed_prepositions = set(option["prepositions"])
+        allowed_prepositions &= set(compatible_prepositions(noun, number))
+        if preposition in allowed_prepositions:
+            candidates.append(noun)
+    return candidates
 
 
 def pick_distinct_frame_places_with_prepositions(
@@ -106,26 +106,25 @@ def pick_distinct_frame_places_with_prepositions(
     pp2_number,
     rng,
 ):
-    if pp1_gender == "m":
-        pp1_pool = [pp_index_m[l] for l in frame["pp1"][pp1_gender]]
-    else:
-        pp1_pool = [pp_index_f[l] for l in frame["pp1"][pp1_gender]]
+    pp1_index = pp_index_m if pp1_gender == "m" else pp_index_f
+    pp2_index = pp_index_m if pp2_gender == "m" else pp_index_f
 
-    if pp2_gender == "m":
-        pp2_pool = [pp_index_m[l] for l in frame["pp2"][pp2_gender]]
-    else:
-        pp2_pool = [pp_index_f[l] for l in frame["pp2"][pp2_gender]]
-
-    pp1_pool = [
-        noun
-        for noun in pp1_pool
-        if pp1_preposition in compatible_prepositions(noun, pp1_number)
-    ]
-    pp2_pool = [
-        noun
-        for noun in pp2_pool
-        if pp2_preposition in compatible_prepositions(noun, pp2_number)
-    ]
+    pp1_pool = frame_slot_candidates(
+        frame,
+        "pp1_options",
+        pp1_gender,
+        pp1_index,
+        pp1_preposition,
+        pp1_number,
+    )
+    pp2_pool = frame_slot_candidates(
+        frame,
+        "pp2_options",
+        pp2_gender,
+        pp2_index,
+        pp2_preposition,
+        pp2_number,
+    )
 
     if not pp1_pool or not pp2_pool:
         return None, None
@@ -135,17 +134,6 @@ def pick_distinct_frame_places_with_prepositions(
     if not pp2_candidates:
         return None, None
     return pp1, rng.choice(pp2_candidates)
-
-
-def pick_preposition_pair(frame, rng):
-    preposition_pairs = frame.get("preposition_pairs")
-    if preposition_pairs:
-        return rng.choice(preposition_pairs)
-
-    pp1_preposition = rng.choice(frame["pp1_prepositions"])
-    pp2_candidates = [prep for prep in frame["pp2_prepositions"] if prep != pp1_preposition]
-    pp2_preposition = rng.choice(pp2_candidates or frame["pp2_prepositions"])
-    return pp1_preposition, pp2_preposition
 
 
 def generate_lexical_combos_for_run(run_id, rng):
@@ -202,13 +190,10 @@ def generate_lexical_combos_for_run(run_id, rng):
 
                 pair_candidates = frame.get("preposition_pairs")
                 if not pair_candidates:
-                    pair_candidates = [
-                        (prep1, prep2)
-                        for prep1 in frame["pp1_prepositions"]
-                        for prep2 in frame["pp2_prepositions"]
-                    ]
+                    continue
 
                 frame_candidates = []
+                pair_candidates = list(pair_candidates)
                 rng.shuffle(pair_candidates)
                 for pp1_preposition, pp2_preposition in pair_candidates:
                     if pp1_preposition == "chez" and pp2_preposition == "chez":
@@ -249,7 +234,7 @@ def generate_lexical_combos_for_run(run_id, rng):
 
             object_dp = None
             if verb["type"] != "copula":
-                object_dp = pick_object_for_verb(verb, rng)
+                object_dp = pick_object_for_frame(frame, verb, rng)
 
             if len({subject["singular"], pp1["singular"], pp2["singular"]}) < 3:
                 break
