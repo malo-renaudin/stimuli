@@ -63,15 +63,103 @@ def pick_object_for_verb(verb, rng):
     return rng.choice(choices)
 
 
+_FIELD_HINTS_BY_FRAME = {
+    "education": ["education"],
+    "workplace": ["workplace"],
+    "transport": ["transport"],
+    "culture": ["culture"],
+}
+
+_OBJECT_HINTS = {
+    "education": {"un examen", "un test", "un exercice", "un article", "un roman"},
+    "workplace": {"un dossier", "un email", "un projet", "une commande"},
+    "transport": {"un bus", "un taxi", "un train", "un trajet", "une option"},
+    "culture": {"un roman", "un article", "un café", "un jus"},
+}
+
+
+def _object_naturalness_score(frame, verb, object_dp):
+    """Heuristic score used to prefer plausible verb-object choices in each frame."""
+    score = 1
+    frame_id = frame["id"]
+    verb_lemma = verb["lemma"]
+
+    # Favor earlier, curated objects in each verb list.
+    frame_choices = frame.get("objects_by_verb", {}).get(verb_lemma, [])
+    if object_dp in frame_choices:
+        score += max(0, len(frame_choices) - frame_choices.index(object_dp))
+    else:
+        global_choices = OBJECTS_BY_VERB.get(verb_lemma, [])
+        if object_dp in global_choices:
+            score += max(0, len(global_choices) - global_choices.index(object_dp))
+
+    # Add a small semantic bonus when object and frame domain match.
+    for hint, tags in _FIELD_HINTS_BY_FRAME.items():
+        if hint in frame_id and object_dp in _OBJECT_HINTS[tags[0]]:
+            score += 3
+            break
+
+    return score
+
+
 def pick_object_for_frame(frame, verb, rng):
     frame_choices = frame.get("objects_by_verb", {}).get(verb["lemma"])
-    if frame_choices:
-        return rng.choice(frame_choices)
-    return pick_object_for_verb(verb, rng)
+    if not frame_choices:
+        frame_choices = OBJECTS_BY_VERB.get(verb["lemma"])
+    if not frame_choices:
+        raise RuntimeError(f"No compatible objects configured for verb: {verb['lemma']}")
+
+    scored = [(obj, _object_naturalness_score(frame, verb, obj)) for obj in frame_choices]
+    top_score = max(score for _, score in scored)
+    top_objects = [obj for obj, score in scored if score == top_score]
+    # Keep deterministic variation across seeds while rejecting low-plausibility choices.
+    return rng.choice(top_objects)
 
 
 def build_lemma_index(items):
     return {item["singular"]: item for item in items}
+
+
+def _split_lemmas_by_number(lemmas):
+    """Create disjoint singular/plural lemma inventories by deterministic split."""
+    singular = set(lemmas[::2])
+    plural = set(lemmas[1::2])
+    return {"singular": singular, "plural": plural}
+
+
+_SUBJECT_LEMMAS_BY_NUMBER = {
+    "m": _split_lemmas_by_number([noun["singular"] for noun in SUBJECT_NOUNS_MASC]),
+    "f": _split_lemmas_by_number([noun["singular"] for noun in SUBJECT_NOUNS_FEM]),
+}
+
+_PP_LEMMAS_BY_NUMBER = {
+    "m": _split_lemmas_by_number([noun["singular"] for noun in PP_NOUNS_MASC]),
+    "f": _split_lemmas_by_number([noun["singular"] for noun in PP_NOUNS_FEM]),
+}
+
+_PLURAL_DISFAVORED_PP_LEMMAS = {"institut", "établissement", "entrée", "office"}
+
+
+def _frame_subject_lemmas(frame, gender, number, number_specific_lexicons):
+    lemmas = list(frame["subject"][gender])
+    if not number_specific_lexicons:
+        return lemmas
+    allowed = _SUBJECT_LEMMAS_BY_NUMBER[gender][number]
+    filtered = [lemma for lemma in lemmas if lemma in allowed]
+    return filtered if filtered else lemmas
+
+
+def _frame_slot_options(frame, slot_key, gender, number, number_specific_lexicons):
+    options = list(frame[slot_key][gender])
+    if not number_specific_lexicons:
+        return options
+    allowed = _PP_LEMMAS_BY_NUMBER[gender][number]
+    filtered = [option for option in options if option["lemma"] in allowed]
+    if number == "plural":
+        preferred = [option for option in filtered if option["lemma"] not in _PLURAL_DISFAVORED_PP_LEMMAS]
+        if preferred:
+            return preferred
+    return filtered if filtered else options
 
 
 def candidate_verbs_for_frame(frame, verb_type):
@@ -83,9 +171,9 @@ def candidate_verbs_for_frame(frame, verb_type):
     return [verb for verb in THIRD_GROUP_VERBS if verb["lemma"] in allowed]
 
 
-def frame_slot_candidates(frame, slot_key, gender, noun_index, preposition, number):
+def frame_slot_candidates(frame, slot_key, gender, noun_index, preposition, number, number_specific_lexicons):
     candidates = []
-    for option in frame[slot_key][gender]:
+    for option in _frame_slot_options(frame, slot_key, gender, number, number_specific_lexicons):
         noun = noun_index[option["lemma"]]
         allowed_prepositions = set(option["prepositions"])
         allowed_prepositions &= set(compatible_prepositions(noun, number))
@@ -104,6 +192,7 @@ def pick_distinct_frame_places_with_prepositions(
     pp2_preposition,
     pp1_number,
     pp2_number,
+    number_specific_lexicons,
     rng,
 ):
     pp1_index = pp_index_m if pp1_gender == "m" else pp_index_f
@@ -116,6 +205,7 @@ def pick_distinct_frame_places_with_prepositions(
         pp1_index,
         pp1_preposition,
         pp1_number,
+        number_specific_lexicons,
     )
     pp2_pool = frame_slot_candidates(
         frame,
@@ -124,6 +214,7 @@ def pick_distinct_frame_places_with_prepositions(
         pp2_index,
         pp2_preposition,
         pp2_number,
+        number_specific_lexicons,
     )
 
     if not pp1_pool or not pp2_pool:
@@ -136,7 +227,7 @@ def pick_distinct_frame_places_with_prepositions(
     return pp1, rng.choice(pp2_candidates)
 
 
-def generate_lexical_combos_for_run(run_id, rng):
+def generate_lexical_combos_for_run(run_id, rng, number_specific_lexicons=False):
     subject_index_m = build_lemma_index(SUBJECT_NOUNS_MASC)
     subject_index_f = build_lemma_index(SUBJECT_NOUNS_FEM)
     pp_index_m = build_lemma_index(PP_NOUNS_MASC)
@@ -168,6 +259,7 @@ def generate_lexical_combos_for_run(run_id, rng):
 
         for idx, spec in enumerate(specs):
             verb_type = verb_type_plan[idx]
+            subject_number = spec["pattern"]["subject_number"]
             pp1_number = spec["pattern"]["pp1_number"]
             pp2_number = spec["pattern"]["pp2_number"]
 
@@ -177,9 +269,15 @@ def generate_lexical_combos_for_run(run_id, rng):
 
             candidates = []
             for frame in SCENARIO_FRAMES:
+                subject_lemmas = _frame_subject_lemmas(
+                    frame,
+                    subject_gender,
+                    subject_number,
+                    number_specific_lexicons,
+                )
                 subject_pool = [
                     subject_index_m[l] if subject_gender == "m" else subject_index_f[l]
-                    for l in frame["subject"][subject_gender]
+                    for l in subject_lemmas
                 ]
                 if not subject_pool:
                     continue
@@ -211,6 +309,7 @@ def generate_lexical_combos_for_run(run_id, rng):
                         pp2_preposition,
                         pp1_number,
                         pp2_number,
+                        number_specific_lexicons,
                         rng,
                     )
                     if pp1 is None or pp2 is None:
@@ -269,15 +368,64 @@ def generate_lexical_combos_for_run(run_id, rng):
     raise RuntimeError(f"Unable to build lexical combos for run {run_id}.")
 
 
-def is_static_preposition(prep):
-    """Prepositions that indicate location (statique)."""
-    return prep in {"dans", "à", "vers", "chez"}
+# Natural French PP ordering: enclosure/container prepositions (dans, chez) naturally
+# precede deictic (devant, derrière) and proximal/relational ones (près de, loin de).
+# Lower rank = preferred earlier in the sentence.
+_PP_ORDER_RANK = {
+    "dans": 0,
+    "chez": 0,
+    "vers": 1,
+    "devant": 2,
+    "derrière": 2,
+    "à gauche de": 3,
+    "à droite de": 3,
+    "en face de": 3,
+    "près de": 4,
+    "à côté de": 4,
+    "loin de": 5,
+}
+
+
+def _should_swap_pp_order(prep1, prep2):
+    """Return True when pp1 should appear after pp2 for natural French ordering."""
+    return _PP_ORDER_RANK.get(prep1, 3) > _PP_ORDER_RANK.get(prep2, 3)
+
+
+def _render_sentence(structure, subject_dp, pp1_str, pp2_str, verb_form, tail_word):
+    if structure == "long":
+        return f"{subject_dp} {pp1_str} {pp2_str} {verb_form} {tail_word}."
+    if structure == "medium":
+        return f"{pp1_str.capitalize()}, {lower_initial(subject_dp)} {pp2_str} {verb_form} {tail_word}."
+    return f"{pp1_str.capitalize()}, {pp2_str}, {lower_initial(subject_dp)} {verb_form} {tail_word}."
+
+
+def _pp_order_score(first_prep, second_prep):
+    """Higher is better for natural PP order under fixed templates."""
+    first_rank = _PP_ORDER_RANK.get(first_prep, 3)
+    second_rank = _PP_ORDER_RANK.get(second_prep, 3)
+
+    score = 0
+    if first_rank < second_rank:
+        score += 4
+    elif first_rank == second_rank:
+        score += 1
+    else:
+        score -= 4
+
+    if first_prep in {"dans", "chez"} and second_prep not in {"dans", "chez"}:
+        score += 2
+    if second_prep in {"près de", "à côté de", "loin de"}:
+        score += 1
+    if first_prep == second_prep:
+        score -= 2
+
+    return score
 
 
 def make_sentence(combo, structure):
     subject_dp = make_subject_dp(combo["subject"], combo["subject_number"])
-    pp1 = make_pp(combo["pp1_preposition"], combo["pp1"], combo["pp1_number"])
-    pp2 = make_pp(combo["pp2_preposition"], combo["pp2"], combo["pp2_number"])
+    pp1_base = make_pp(combo["pp1_preposition"], combo["pp1"], combo["pp1_number"])
+    pp2_base = make_pp(combo["pp2_preposition"], combo["pp2"], combo["pp2_number"])
 
     verb_form = expected_verb_form(combo["verb"], combo["subject_number"], combo["grammaticality"])
     expected_verb = combo["verb"]["singular"] if combo["subject_number"] == "singular" else combo["verb"]["plural"]
@@ -287,20 +435,19 @@ def make_sentence(combo, structure):
     else:
         tail_word = combo["object_dp"]
 
-    if structure == "long":
-        # For long structure, prefer static prepositions (dans, à, etc.) before relational ones (devant, à côté de, etc.)
-        pp1_is_static = is_static_preposition(combo["pp1_preposition"])
-        pp2_is_static = is_static_preposition(combo["pp2_preposition"])
-        
-        # If pp2 is static and pp1 is relational, swap them for more natural word order
-        if pp2_is_static and not pp1_is_static:
-            pp1, pp2 = pp2, pp1
-        
-        sentence = f"{subject_dp} {pp1} {pp2} {verb_form} {tail_word}."
-    elif structure == "medium":
-        sentence = f"{pp1.capitalize()}, {lower_initial(subject_dp)} {pp2} {verb_form} {tail_word}."
-    else:
-        sentence = f"{pp1.capitalize()}, {pp2}, {lower_initial(subject_dp)} {verb_form} {tail_word}."
+    # Rerank only two fixed-template candidates: original PP order vs swapped order.
+    # This keeps experimental templates unchanged while selecting the more natural surface form.
+    keep_order_sentence = _render_sentence(structure, subject_dp, pp1_base, pp2_base, verb_form, tail_word)
+    swap_order_sentence = _render_sentence(structure, subject_dp, pp2_base, pp1_base, verb_form, tail_word)
+
+    keep_score = _pp_order_score(combo["pp1_preposition"], combo["pp2_preposition"])
+    swap_score = _pp_order_score(combo["pp2_preposition"], combo["pp1_preposition"])
+
+    # Keep the old deterministic behavior as an additional tie-break preference.
+    if _should_swap_pp_order(combo["pp1_preposition"], combo["pp2_preposition"]):
+        swap_score += 1
+
+    sentence = swap_order_sentence if swap_score > keep_score else keep_order_sentence
 
     return {
         "Run_ID": combo["run_id"],
@@ -339,12 +486,16 @@ def make_sentence(combo, structure):
     }
 
 
-def generate_trials(seed):
+def generate_trials(seed, use_number_specific_lexicons=False):
     rng = random.Random(seed)
     all_trials = []
 
     for run_id in range(1, RUN_COUNT + 1):
-        combos = generate_lexical_combos_for_run(run_id, rng)
+        combos = generate_lexical_combos_for_run(
+            run_id,
+            rng,
+            number_specific_lexicons=use_number_specific_lexicons,
+        )
         run_trials = []
         for combo in combos:
             for structure in STRUCTURES:

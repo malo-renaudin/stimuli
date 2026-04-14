@@ -285,7 +285,7 @@ SCENARIO_FRAMES = [
         "preposition_pairs": [("dans", "près de"), ("dans", "loin de")],
         "lexical_verbs": ["finir"],
         "objects_by_verb": {
-            "finir": ["un dossier", "un exercice"],
+            "finir": ["un dossier", "une commande"],
         },
     },
     {

@@ -15,18 +15,28 @@ def parse_args():
     parser.add_argument("--seed", type=int, default=13, help="Random seed for reproducibility.")
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT, help="Output file path.")
     parser.add_argument("--format", choices=["csv", "tsv"], default="csv", help="Output delimiter format.")
+    parser.add_argument(
+        "--number-specific-lexicons",
+        action="store_true",
+        help=(
+            "Use separate lexical pools for singular vs plural selection in frames. "
+            "When enabled and --output is not set, writes to french_run_list_number_split.csv."
+        ),
+    )
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
 
-    trials = generate_trials(args.seed)
+    trials = generate_trials(args.seed, use_number_specific_lexicons=args.number_specific_lexicons)
     assign_delays(trials, random.Random(args.seed + 1000))
     validate_trials(trials)
 
     delimiter = "," if args.format == "csv" else "\t"
     output_path = args.output
+    if args.number_specific_lexicons and output_path == DEFAULT_OUTPUT:
+        output_path = output_path.with_name("french_run_list_number_split.csv")
     if output_path.suffix == "":
         output_path = output_path.with_suffix(f".{args.format}")
 
@@ -37,6 +47,7 @@ def main():
     print(f"Structures per combination: {len(STRUCTURES)}")
     print(f"Experimental trials per run: {LEXICAL_COMBOS_PER_RUN * len(STRUCTURES)}")
     print(f"Total trials: {len(trials)}")
+    print(f"Number-specific lexical sets: {args.number_specific_lexicons}")
     print(f"Saved run list to {output_path}")
 
 
